@@ -1,6 +1,6 @@
 package com.egen.orders.model;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -32,14 +32,13 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @DynamicUpdate
 @EntityListeners(AuditingEntityListener.class)
 @Entity
-@Table(name="address")
+@Table(name="order_address")
 public class OrderAddress { // POJO Class for Order Address
 	
 	// Variables Start
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")
-    @Cascade(CascadeType.MERGE)
     @JsonIgnore
     private Order order;
 
@@ -67,9 +66,8 @@ public class OrderAddress { // POJO Class for Order Address
     private String type;
 
     @Basic(optional = false)
-    @CreationTimestamp
     @Column(name = "created_at")
-    private Date createdAt;
+    private String createdAt;
     
     //Variables End
     
@@ -87,7 +85,7 @@ public class OrderAddress { // POJO Class for Order Address
 	 * @param createdAt
 	 */
 	public OrderAddress(Order order, String addressLine1, String addressLine2, String city, String state, String zip,
-			Long addressId, String type, Date createdAt) {
+			Long addressId, String type, String createdAt) {
 		super();
 		this.order = order;
 		this.addressLine1 = addressLine1;
@@ -225,14 +223,14 @@ public class OrderAddress { // POJO Class for Order Address
 	/**
 	 * @return the createdAt
 	 */
-	public Date getCreatedAt() {
+	public String getCreatedAt() {
 		return createdAt;
 	}
 
 	/**
 	 * @param createdAt the createdAt to set
 	 */
-	public void setCreatedAt(Date createdAt) {
+	public void setCreatedAt(String createdAt) {
 		this.createdAt = createdAt;
 	}
 

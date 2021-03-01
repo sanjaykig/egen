@@ -17,6 +17,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
@@ -29,6 +31,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @DynamicUpdate
 @EntityListeners(AuditingEntityListener.class)
 @Entity
+@Table(name="order_info")
 public class OrderInfo { // POJO Class for Order Info
 
 	//Variables Start
@@ -45,7 +48,6 @@ public class OrderInfo { // POJO Class for Order Info
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")
-    @Cascade(org.hibernate.annotations.CascadeType.MERGE)
     @JsonIgnore
     private Order order;
     

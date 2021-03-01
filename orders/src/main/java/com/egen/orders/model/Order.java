@@ -55,17 +55,17 @@ public class Order implements Serializable { /**
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedAt;
 
-    @OneToMany(cascade = CascadeType.ALL,
+    @OneToMany(cascade = CascadeType.MERGE,
             fetch = FetchType.LAZY,
             mappedBy = "order")
     private List<OrderInfo> orderDetails;
 
-    @OneToMany(cascade = CascadeType.ALL,
+    @OneToMany(cascade = CascadeType.MERGE,
             fetch = FetchType.LAZY,
             mappedBy = "order")
     private List<OrderAddress> addressesList;
 
-    @OneToMany(cascade = CascadeType.ALL,
+    @OneToMany(cascade = CascadeType.MERGE,
             fetch = FetchType.EAGER,
             mappedBy = "order")
     private List<OrderPayment> orderPaymentList;

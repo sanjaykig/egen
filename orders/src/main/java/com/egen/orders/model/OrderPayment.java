@@ -3,8 +3,6 @@
  */
 package com.egen.orders.model;
 
-import java.sql.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
@@ -17,7 +15,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
-import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -44,12 +41,10 @@ public class OrderPayment { // POJO class for order payment
     private String method;
 
     @Column(name = "date")
-    @CreationTimestamp
-    private Date date;
+    private String date;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")
-    @Cascade(CascadeType.MERGE)
     @JsonIgnore
     private Order order;
     
@@ -70,7 +65,7 @@ public class OrderPayment { // POJO class for order payment
 	 * @param date
 	 * @param order
 	 */
-	public OrderPayment(Integer paymentId, String method, Date date, Order order) {
+	public OrderPayment(Integer paymentId, String method, String date, Order order) {
 		super();
 		this.paymentId = paymentId;
 		this.method = method;
@@ -113,14 +108,14 @@ public class OrderPayment { // POJO class for order payment
 	/**
 	 * @return the date
 	 */
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
 
 	/**
 	 * @param date the date to set
 	 */
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 
