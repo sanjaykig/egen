@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.egen.orders.enums.Errors;
+import com.egen.orders.enums.Status;
 import com.egen.orders.exception.ResourceNotFoundException;
 import com.egen.orders.model.Order;
 import com.egen.orders.model.OrderAddress;
@@ -56,8 +57,9 @@ public class OrderServiceImpl implements OrderService{ // Implementation Class f
 
 	@Override
 	public boolean isOrderExists(Long orderId) {
+		
 		// TODO Auto-generated method stub
-		return false;
+		return orderRepository.existsByOrderId(orderId);
 	}
 
 	@Override
@@ -94,25 +96,50 @@ public class OrderServiceImpl implements OrderService{ // Implementation Class f
 	}
 
 	@Override
-	public Order completeOrder(Long orderId) {
+	public Order completeOrder(Long orderId) throws ResourceNotFoundException {
+		Order order = orderRepository.findByOrderId(orderId);
+        if(!order.getOrderStatus().equals(Status.STARTED.getStatus())) {
+            throw new ResourceNotFoundException(Errors.ORDER_STATUS_NOT_STARTED);
+        }
+        order.setOrderStatus(Status.COMPLETED.getStatus());
+        orderRepository.save(order);
+        return orderRepository.findByOrderId(orderId);
 		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override
-	public Order cancelOrder(Long orderId) {
+	public Order cancelOrder(Long orderId) throws ResourceNotFoundException {
+		Order order = orderRepository.findByOrderId(orderId);
+        if(!order.getOrderStatus().equals(Status.STARTED.getStatus())) {
+            throw new ResourceNotFoundException(Errors.ORDER_STATUS_NOT_STARTED);
+        }
+        order.setOrderStatus(Status.CANCELLED.getStatus());
+        orderRepository.save(order);
+        return orderRepository.findByOrderId(orderId);
 		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override
 	public Order updateOrder(Order order) {
+		Order orderObj = orderRepository.findByOrderId(order.getOrderId());
+        if(orderObj != null){
+        	orderObj.setOrderDetails(order.getOrderDetails());
+        	orderObj.setTotal(order.getTotal());
+        	orderObj.setTax(order.getTax());
+        	orderObj.setOrderPaymentList(order.getOrderPaymentList());
+        	orderObj.setSubTotal(order.getSubTotal());
+        	orderObj.setAddressesList(order.getAddressesList());
+            return orderRepository.save(orderObj);
+        }
+        return null;
 		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override
 	public void saveBulkOrder(List<Order> orderList) {
+		for(Order order:orderList){
+            createOrder(order);
+        }
 		// TODO Auto-generated method stub
 		
 	}

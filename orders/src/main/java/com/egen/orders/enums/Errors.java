@@ -9,5 +9,6 @@ package com.egen.orders.enums;
  */
 public enum Errors {
 	ORDER_NOT_FOUND,
-	JSON_NOT_FORMED
+	JSON_NOT_FORMED,
+	ORDER_STATUS_NOT_STARTED
 }

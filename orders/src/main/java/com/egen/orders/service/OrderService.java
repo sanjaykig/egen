@@ -21,9 +21,9 @@ public interface OrderService {
     
     Order createOrder(Order order);
     
-    Order completeOrder(Long orderId);
+    Order completeOrder(Long orderId) throws ResourceNotFoundException;
     
-    Order cancelOrder(Long orderId);
+    Order cancelOrder(Long orderId) throws ResourceNotFoundException;
     
     Order updateOrder(Order order);
     
