@@ -13,7 +13,7 @@ import com.egen.orders.model.Order;
  *
  */
 
-public interface OrderService {
+public interface OrderService { // Service Interface for abstraction
 	
 	Order getOrderById(Long orderId) throws ResourceNotFoundException;
 	

@@ -14,7 +14,8 @@ import com.egen.orders.model.Order;
  */
 
 @Repository
-public interface OrderRepository extends JpaRepository<Order,Integer> {
+public interface OrderRepository extends JpaRepository<Order,Integer> {// Repository Interface for Postgres via
+	//JPA
 
     Order findByOrderId(Long orderId);
     boolean existsByOrderId(Long orderId);

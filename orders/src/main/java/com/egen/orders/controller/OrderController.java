@@ -37,7 +37,7 @@ import io.swagger.annotations.ApiOperation;
  */
 @RestController
 @RequestMapping("/order/")
-public class OrderController {
+public class OrderController { // Controller class for order API
 
 	// Dependency Injection
 	

@@ -18,7 +18,7 @@ import com.egen.orders.service.OrderService;
  *
  */
 @Service
-public class KafkaConsumerImpl implements KafkaConsumer {
+public class KafkaConsumerImpl implements KafkaConsumer { // Implementation of Kafka Consumer
 
 	@Autowired
     OrderService orderService;

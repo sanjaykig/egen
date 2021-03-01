@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface OrderInfoRepository extends JpaRepository<OrderInfo,Integer> {
+public interface OrderInfoRepository extends JpaRepository<OrderInfo,Integer> {// Repository Interface for Postgres via
+	//JPA
     List<OrderInfo> findByOrder(Order order);
 }

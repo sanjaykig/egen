@@ -10,7 +10,7 @@ import com.egen.orders.enums.Errors;
  *
  */
 @ResponseStatus(value = HttpStatus.NOT_FOUND)
-public class ResourceNotFoundException extends Exception {
+public class ResourceNotFoundException extends Exception { // Custom Exception Handling Class
 	private static final long serialVersionUID = 1L;
 
 	/**

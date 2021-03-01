@@ -1,6 +1,6 @@
 package com.egen.orders.enums;
 
-public enum Status {
+public enum Status { // Enumeration for global type based constants consumption
 	STARTED("STARTED"),
 	COMPLETED("COMPLETED"),
 	CANCELLED("CANCELLED");
