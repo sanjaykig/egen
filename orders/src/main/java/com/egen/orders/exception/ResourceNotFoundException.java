@@ -3,6 +3,8 @@ package com.egen.orders.exception;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import com.egen.orders.enums.Errors;
+
 /**
  * @author sanjaykhan
  *
@@ -12,10 +14,10 @@ public class ResourceNotFoundException extends Exception {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * @param message
+	 * @param orderNotFound
 	 */
-	public ResourceNotFoundException(String message) {
-		super(message);
+	public ResourceNotFoundException(Errors orderNotFound) {
+		super();
 		// TODO Auto-generated constructor stub
 	}
 	
