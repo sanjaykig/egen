@@ -3,12 +3,6 @@
  */
 package com.egen.orders.model;
 
-/**
- * @author sanjaykhan
- *
- */
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -21,7 +15,12 @@ import java.util.List;
 
 @Entity
 @Table(name="orders")
-public class Order implements Serializable {
+public class Order implements Serializable { /**
+	 * 
+	 */
+	private static final long serialVersionUID = 897910135897101046L;
+
+// Master POJO Class for Order
 	
 	// Variables Start
 
@@ -56,6 +55,22 @@ public class Order implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedAt;
 
+    @OneToMany(cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY,
+            mappedBy = "order")
+    private List<OrderInfo> orderDetails;
+
+    @OneToMany(cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY,
+            mappedBy = "order")
+    private List<OrderAddress> addressesList;
+
+    @OneToMany(cascade = CascadeType.ALL,
+            fetch = FetchType.EAGER,
+            mappedBy = "order")
+    private List<OrderPayment> orderPaymentList;
+
+    
 	
     //Variables end
     
@@ -63,9 +78,11 @@ public class Order implements Serializable {
 	/**
 	 * 
 	 */
-	public Order() {
-		super();
-	}
+    public Order() {
+        this.orderDetails = new ArrayList<>();
+        this.addressesList = new ArrayList<>();
+        this.orderPaymentList = new ArrayList<>();
+    }
 
 
 
@@ -236,6 +253,60 @@ public class Order implements Serializable {
 	 */
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
+	}
+
+
+
+	/**
+	 * @return the orderDetails
+	 */
+	public List<OrderInfo> getOrderDetails() {
+		return orderDetails;
+	}
+
+
+
+	/**
+	 * @param orderDetails the orderDetails to set
+	 */
+	public void setOrderDetails(List<OrderInfo> orderDetails) {
+		this.orderDetails = orderDetails;
+	}
+
+
+
+	/**
+	 * @return the addressesList
+	 */
+	public List<OrderAddress> getAddressesList() {
+		return addressesList;
+	}
+
+
+
+	/**
+	 * @param addressesList the addressesList to set
+	 */
+	public void setAddressesList(List<OrderAddress> addressesList) {
+		this.addressesList = addressesList;
+	}
+
+
+
+	/**
+	 * @return the orderPaymentList
+	 */
+	public List<OrderPayment> getOrderPaymentList() {
+		return orderPaymentList;
+	}
+
+
+
+	/**
+	 * @param orderPaymentList the orderPaymentList to set
+	 */
+	public void setOrderPaymentList(List<OrderPayment> orderPaymentList) {
+		this.orderPaymentList = orderPaymentList;
 	}
     
 	

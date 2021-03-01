@@ -33,7 +33,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @EntityListeners(AuditingEntityListener.class)
 @Entity
 @Table(name="address")
-public class OrderAddress {
+public class OrderAddress { // POJO Class for Order Address
 	
 	// Variables Start
 
@@ -69,7 +69,6 @@ public class OrderAddress {
     @Basic(optional = false)
     @CreationTimestamp
     @Column(name = "created_at")
-    @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
     
     //Variables End

@@ -6,6 +6,8 @@ package com.egen.orders.dto;
 import java.util.List;
 
 import com.egen.orders.model.OrderAddress;
+import com.egen.orders.model.OrderInfo;
+import com.egen.orders.model.OrderPayment;
 
 
 
@@ -14,7 +16,7 @@ import com.egen.orders.model.OrderAddress;
  *
  */
 
-public class OrderDTO {
+public class OrderDTO { // Data Transfer Object Class for Orders to use in controllers
 	
 	// Variables Start
     private OrderAddress billingAddress;
@@ -24,7 +26,7 @@ public class OrderDTO {
     private Double subTotal;
     private String deliverType;
     private List<OrderPayment> payment_details;
-    private List<OrderDetail> orderDetailList;
+    private List<OrderInfo> orderDetailList;
     
     
     // Variables end
@@ -49,7 +51,7 @@ public class OrderDTO {
 	 * @param orderDetailList
 	 */
 	public OrderDTO(OrderAddress billingAddress, OrderAddress shippingAddress, Double total, Double tax, Double subTotal,
-			String deliverType, List<OrderPayment> payment_details, List<OrderDetail> orderDetailList) {
+			String deliverType, List<OrderPayment> payment_details, List<OrderInfo> orderDetailList) {
 		super();
 		this.billingAddress = billingAddress;
 		this.shippingAddress = shippingAddress;
@@ -153,13 +155,13 @@ public class OrderDTO {
 	/**
 	 * @return the orderDetailList
 	 */
-	public List<OrderDetail> getOrderDetailList() {
+	public List<OrderInfo> getOrderDetailList() {
 		return orderDetailList;
 	}
 	/**
 	 * @param orderDetailList the orderDetailList to set
 	 */
-	public void setOrderDetailList(List<OrderDetail> orderDetailList) {
+	public void setOrderDetailList(List<OrderInfo> orderDetailList) {
 		this.orderDetailList = orderDetailList;
 	}
 	
