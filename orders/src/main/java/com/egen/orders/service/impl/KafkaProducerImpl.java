@@ -23,16 +23,15 @@ public class KafkaProducerImpl implements KafkaProducer{ // Implementation of Ka
 	@Autowired
     private KafkaTemplate<String, Order> kafkaTemplate;
 	
-    private static final String TOPIC = "demo";
+    private static final String TOPIC = "order";
     
 	private final Logger log = LogManager.getLogger(this.getClass()); // Log4J
 	
 	@Override
 	public void sendMessage(Order order) {
 		
-		log.info(String.format("#### -> Producing message to topic %s -> %s", TOPIC,order));
+		log.info(String.format("@@@@ : Producing message to topic %s -> %s", TOPIC,order));
         this.kafkaTemplate.send(TOPIC, order);
-        log.info(String.format("#### -> Message published -> %s", order));
 		// TODO Auto-generated method stub
 		
 	}

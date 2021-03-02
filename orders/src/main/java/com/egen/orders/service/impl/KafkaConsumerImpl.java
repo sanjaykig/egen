@@ -25,11 +25,11 @@ public class KafkaConsumerImpl implements KafkaConsumer { // Implementation of K
 
 	private final Logger log = LogManager.getLogger(this.getClass()); // Log4J
 
-    @KafkaListener(topics = "demo", groupId = "group_id",containerFactory="orderKafkaListenerContainerFactory")
+    @KafkaListener(topics = "order", groupId = "group_id",containerFactory="orderKafkaListenerContainerFactory")
     
     @Override
     public void consume(Order order)  {
-        log.info(String.format("#### -> Consuming message -> %s", order));
+        log.info(String.format("@@@@ : Consuming Kafka message -> %s", order));
         if(orderService.isOrderExists(order.getOrderId())){
             orderService.updateOrder(order);
         } else {
