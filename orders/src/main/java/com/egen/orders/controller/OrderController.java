@@ -73,7 +73,7 @@ public class OrderController { // Controller class for order API
             billingAddress.setType("Billing");
             shipAddress.setType("Shipping");
             order.setOrderStatus(Status.STARTED.getStatus());
-            order.setSubTotal(orderDTO.getSub_total());
+            order.setSubTotal(orderDTO.getSubTotal());
             order.setTax(orderDTO.getTax());
             order.setTotal(orderDTO.getTotal());
             order.setCustomerId(21L);
@@ -81,7 +81,7 @@ public class OrderController { // Controller class for order API
             addressList.add(billingAddress);
             addressList.add(shipAddress);
             order.setAddressesList(addressList);
-            order.setOrderPaymentList(orderDTO.getPayment_details());
+            order.setOrderPaymentList(orderDTO.getPaymentDetails());
             log.info("Created the new Order");
             return ResponseEntity.ok(orderService.createOrder(order));
         } else {
@@ -117,7 +117,7 @@ public class OrderController { // Controller class for order API
             billingAddress.setType("Billing");
             shipAddress.setType("Shipping");
             order.setOrderStatus(Status.STARTED.getStatus());
-            order.setSubTotal(orderDTO.getSub_total());
+            order.setSubTotal(orderDTO.getSubTotal());
             order.setTax(orderDTO.getTax());
             order.setTotal(orderDTO.getTotal());
             order.setCustomerId(21L);
@@ -125,7 +125,7 @@ public class OrderController { // Controller class for order API
             addressList.add(billingAddress);
             addressList.add(shipAddress);
             order.setAddressesList(addressList);
-            order.setOrderPaymentList(orderDTO.getPayment_details());
+            order.setOrderPaymentList(orderDTO.getPaymentDetails());
             kafkaProducer.sendMessage(order);
         }
         return new ResponseEntity<>(HttpStatus.OK);

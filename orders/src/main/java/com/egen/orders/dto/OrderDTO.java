@@ -119,13 +119,13 @@ public class OrderDTO { // Data Transfer Object Class for Orders to use in contr
 	/**
 	 * @return the sub_total
 	 */
-	public Double getSub_total() {
+	public Double getSubTotal() {
 		return subTotal;
 	}
 	/**
 	 * @param sub_total the sub_total to set
 	 */
-	public void setSub_total(Double subTotal) {
+	public void setSubTotal(Double subTotal) {
 		this.subTotal = subTotal;
 	}
 	/**
@@ -143,13 +143,13 @@ public class OrderDTO { // Data Transfer Object Class for Orders to use in contr
 	/**
 	 * @return the payment_details
 	 */
-	public List<OrderPayment> getPayment_details() {
+	public List<OrderPayment> getPaymentDetails() {
 		return payment_details;
 	}
 	/**
 	 * @param payment_details the payment_details to set
 	 */
-	public void setPayment_details(List<OrderPayment> payment_details) {
+	public void setPaymentDetails(List<OrderPayment> payment_details) {
 		this.payment_details = payment_details;
 	}
 	/**

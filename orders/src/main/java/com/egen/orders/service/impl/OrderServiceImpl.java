@@ -17,7 +17,7 @@ import com.egen.orders.model.Order;
 import com.egen.orders.model.OrderAddress;
 import com.egen.orders.model.OrderInfo;
 import com.egen.orders.model.OrderPayment;
-import com.egen.orders.repository.AddressRepository;
+import com.egen.orders.repository.OrderAddressRepository;
 import com.egen.orders.repository.OrderInfoRepository;
 import com.egen.orders.repository.OrderPaymentRepository;
 import com.egen.orders.repository.OrderRepository;
@@ -35,7 +35,7 @@ public class OrderServiceImpl implements OrderService{ // Implementation Class f
     OrderRepository orderRepository;
 	
 	@Autowired
-    AddressRepository addressRepository;
+    OrderAddressRepository addressRepository;
 	
 	@Autowired
     OrderPaymentRepository orderPaymentRepository;
